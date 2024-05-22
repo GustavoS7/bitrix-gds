@@ -1,29 +1,29 @@
 import { TGetResponse, TListResponse } from '../../response';
-import { Deal } from '../../../entities/deal.entity';
-import { DealMethods } from './deal-interface.methods';
+import { Contact } from '../../../entities/contact.entity';
+import { Methods } from '../methods';
 
-export type TDealsMethds = {
-  [DealMethods.CRM_DEAL_ADD]: {
+export type TContactMethods = {
+  [Methods.CRM_CONTACT_ADD]: {
     response: TGetResponse<number>;
     data: {
-      fields: Partial<Deal>;
+      fields: Partial<Contact>;
       params?: {
         REGISTER_SONET_EVENT: 'Y' | 'N';
       };
     };
   };
 
-  [DealMethods.CRM_DEAL_DELETE]: {
-    reponse: TGetResponse<number>;
+  [Methods.CRM_CONTACT_DELETE]: {
+    response: TGetResponse<number>;
     data: {
       id: string;
     };
   };
 
-  [DealMethods.CRM_DEAL_FIELDS]: {
-    reponse: TGetResponse<
+  [Methods.CRM_CONTACT_FIELDS]: {
+    response: TGetResponse<
       Record<
-        keyof Deal,
+        keyof Contact,
         {
           type: string;
           isRequired: boolean;
@@ -36,17 +36,18 @@ export type TDealsMethds = {
         }
       >
     >;
+    data?: any;
   };
 
-  [DealMethods.CRM_DEAL_GET]: {
-    reponse: TGetResponse<Deal>;
+  [Methods.CRM_CONTACT_GET]: {
+    response: TGetResponse<Contact>;
     data: {
       id: string;
     };
   };
 
-  [DealMethods.CRM_DEAL_LIST]: {
-    reponse: TListResponse<Deal>;
+  [Methods.CRM_CONTACT_LIST]: {
+    response: TListResponse<Contact>;
     data: {
       order?: { [key: string]: string };
       filter?: { [key: string]: string | number };
@@ -55,8 +56,8 @@ export type TDealsMethds = {
     };
   };
 
-  [DealMethods.CRM_DEAL_UPDATE]: {
-    reponse: TGetResponse<number>;
+  [Methods.CRM_CONTACT_UPDATE]: {
+    response: TGetResponse<number>;
     data: {
       id: string;
       fields: { [key: string]: string };

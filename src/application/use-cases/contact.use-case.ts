@@ -1,4 +1,4 @@
-import { ContactMethods } from '../../domain/shared/methods/contact/contact.methods';
+import { ContactMethods } from '../../core/shared/methods/contact/contact-interface.methods';
 
 export class ContactUseCase {
   private call: any;

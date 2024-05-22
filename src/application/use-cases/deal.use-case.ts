@@ -1,4 +1,4 @@
-import { DealMethods } from '../../domain/shared/methods/deal/deal-interface.methods';
+import { DealMethods } from '../../core/shared/methods/deal/deal-interface.methods';
 
 export class DealUseCase {
   private call: any;
