@@ -1,0 +1,10 @@
+/node_modules
+/src
+
+script.js
+
+.env
+.DS_Store
+
+tsconfig.json
+tsup.config.ts

@@ -1,3 +1,7 @@
-node_modules
+/node_modules
+/dist
 
-index.js
+script.js
+
+.env
+.DS_Store
