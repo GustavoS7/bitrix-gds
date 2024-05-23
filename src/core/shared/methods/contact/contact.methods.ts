@@ -6,7 +6,7 @@ export type TContactMethods = {
   [Methods.CRM_CONTACT_ADD]: {
     response: TGetResponse<number>;
     data: {
-      fields: Partial<Contact>;
+      fields?: Partial<Contact>;
       params?: {
         REGISTER_SONET_EVENT: 'Y' | 'N';
       };
@@ -60,7 +60,7 @@ export type TContactMethods = {
     response: TGetResponse<number>;
     data: {
       id: string;
-      fields: { [key: string]: string };
+      fields?: { [key: string]: string };
       params?: {
         REGISTER_SONET_EVENT: 'Y' | 'N';
       };

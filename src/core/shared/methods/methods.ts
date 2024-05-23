@@ -1,7 +1,24 @@
 import { TContactMethods } from './contact/contact.methods';
 import { TDealsMethods } from './deal/deal.methods';
 
+export type MethodsString =
+  | 'batch'
+  | 'crm.deal.add'
+  | 'crm.deal.delete'
+  | 'crm.deal.fields'
+  | 'crm.deal.get'
+  | 'crm.deal.list'
+  | 'crm.deal.update'
+  | 'crm.contact.add'
+  | 'crm.contact.delete'
+  | 'crm.contact.fields'
+  | 'crm.contact.get'
+  | 'crm.contact.list'
+  | 'crm.contact.update';
+
 export enum Methods {
+  BATCH = 'batch',
+
   CRM_DEAL_ADD = 'crm.deal.add',
   CRM_DEAL_DELETE = 'crm.deal.delete',
   CRM_DEAL_FIELDS = 'crm.deal.fields',
@@ -40,6 +57,7 @@ export enum Methods {
   CRM_CONTACT_LIST = 'crm.contact.list',
   CRM_CONTACT_UPDATE = 'crm.contact.update',
 
+  // To implement
   // CRM_CONTACT_COMPANY_ADD = 'crm.contact.company.add',
   // CRM_CONTACT_COMPANY_DELETE = 'crm.contact.company.add',
   // CRM_CONTACT_COMPANY_FIELDS = 'crm.contact.company.fields',
@@ -55,7 +73,7 @@ export enum Methods {
   // CRM_CONTACT_USERFIELD_DELETE = 'crm.contact.userfield.delete',
 }
 
-type ExtractValue<
+type MethodDataValues<
   MAP extends Record<string, unknown>,
   KEY extends string | number | symbol,
   MAPKEY extends keyof MAP = KEY extends keyof MAP ? KEY : never,
@@ -63,8 +81,4 @@ type ExtractValue<
 
 export type TMethods = TContactMethods & TDealsMethods;
 
-export type MethodData<M extends Methods> = ExtractValue<TMethods, M>;
-
-export type MethodPayload<M extends Methods> = MethodData<M>['response'];
-
-export type MethodParams<M extends Methods> = MethodData<M>['data'];
+export type MethodParams<M extends Methods> = MethodDataValues<TMethods, M>;

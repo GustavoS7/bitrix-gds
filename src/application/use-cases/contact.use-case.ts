@@ -1,4 +1,4 @@
-import { ContactMethods } from '../../core/shared/methods/contact/contact-interface.methods';
+import { Methods } from '../../core/shared/methods';
 
 export class ContactUseCase {
   private call: any;
@@ -8,23 +8,23 @@ export class ContactUseCase {
   }
 
   async add<T>({ fields, params }: any) {
-    return await this.call(ContactMethods.CRM_CONTACT_ADD, { fields, params });
+    return await this.call(Methods.CRM_CONTACT_ADD, { fields, params });
   }
 
   async delete({ id }: any) {
-    return await this.call(ContactMethods.CRM_CONTACT_DELETE, { id });
+    return await this.call(Methods.CRM_CONTACT_DELETE, { id });
   }
 
   async fields() {
-    return await this.call(ContactMethods.CRM_CONTACT_FIELDS, {});
+    return await this.call(Methods.CRM_CONTACT_FIELDS, {});
   }
 
   async get({ id }: any) {
-    return await this.call(ContactMethods.CRM_CONTACT_GET, { id });
+    return await this.call(Methods.CRM_CONTACT_GET, { id });
   }
 
   async list({ order, filter, select, start }: any) {
-    return await this.call(ContactMethods.CRM_CONTACT_LIST, {
+    return await this.call(Methods.CRM_CONTACT_LIST, {
       order,
       filter,
       select,
@@ -33,7 +33,7 @@ export class ContactUseCase {
   }
 
   async update({ id, fields, params }: any) {
-    return await this.call(ContactMethods.CRM_CONTACT_LIST, {
+    return await this.call(Methods.CRM_CONTACT_LIST, {
       id,
       fields,
       params,

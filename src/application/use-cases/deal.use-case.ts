@@ -1,4 +1,4 @@
-import { DealMethods } from '../../core/shared/methods/deal/deal-interface.methods';
+import { Methods } from '../../core/shared/methods';
 
 export class DealUseCase {
   private call: any;
@@ -8,23 +8,23 @@ export class DealUseCase {
   }
 
   async add<T>({ fields, params }: any) {
-    return await this.call(DealMethods.CRM_DEAL_ADD, { fields, params });
+    return await this.call(Methods.CRM_DEAL_ADD, { fields, params });
   }
 
   async delete({ id }: any) {
-    return await this.call(DealMethods.CRM_DEAL_DELETE, { id });
+    return await this.call(Methods.CRM_DEAL_DELETE, { id });
   }
 
   async fields() {
-    return await this.call(DealMethods.CRM_DEAL_FIELDS, {});
+    return await this.call(Methods.CRM_DEAL_FIELDS, {});
   }
 
   async get({ id }: any) {
-    return await this.call(DealMethods.CRM_DEAL_GET, { id });
+    return await this.call(Methods.CRM_DEAL_GET, { id });
   }
 
   async list({ order, filter, select, start }: any) {
-    return await this.call(DealMethods.CRM_DEAL_LIST, {
+    return await this.call(Methods.CRM_DEAL_LIST, {
       order,
       filter,
       select,
@@ -33,7 +33,7 @@ export class DealUseCase {
   }
 
   async update({ id, fields, params }: any) {
-    return await this.call(DealMethods.CRM_DEAL_LIST, {
+    return await this.call(Methods.CRM_DEAL_LIST, {
       id,
       fields,
       params,

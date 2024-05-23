@@ -6,7 +6,7 @@ export type TDealsMethods = {
   [Methods.CRM_DEAL_ADD]: {
     response: TGetResponse<number>;
     data: {
-      fields: Partial<Deal>;
+      fields?: Partial<Deal>;
       params?: {
         REGISTER_SONET_EVENT: 'Y' | 'N';
       };
@@ -60,7 +60,7 @@ export type TDealsMethods = {
     response: TGetResponse<number>;
     data: {
       id: string;
-      fields: { [key: string]: string };
+      fields?: { [key: string]: string };
       params?: {
         REGISTER_SONET_EVENT: 'Y' | 'N';
       };
