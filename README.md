@@ -8,4 +8,141 @@ A library that makes requests to Bitrix API much easier.
 
 Using npm:
 
-`npm install bitrix-gds`
+```
+npm install bitrix-gds
+```
+
+Using yarn:
+
+```
+yarn add bitrix-gds
+```
+## Get Started
+
+
+```
+import { Bitrix24 } from 'bitrix-gds'
+
+const bitrix24 = new Bitrix24(`https://YOUR_DOMAIN.bitrix24.{ru|com|de}/rest/{USER_ID}/{WEBHOOK_TOKEN}`)
+```
+
+### WEBHOOK_URL
+  Create a inbound webhook in your bitrix.
+
+  Copy and Paste the endpoint given by bitrix, as a param in Bitrix24 new instance.
+
+## Methods
+
+### Deals
+
+* ### Add
+```
+const { result } = await bitrix.deals.add({ 
+  fields: {
+    TITLE: 'John Doe'
+  }
+})
+```
+
+* ### Get
+```
+const { result } = await bitrix.deals.get({ id: '00' })
+```
+
+* ### Delete
+```
+const { result } = await bitrix.deals.delete({ id: '00' })
+```
+
+* ### Fields
+```
+const { result } = await bitrix.deals.fields()
+```
+
+* ### List
+```
+const { result } = await bitrix.deals.list({
+  filter: {
+    STAGE_ID: '00'
+  },
+  select: ['*']
+})
+```
+
+* ### Update
+```
+const { result } = await bitrix.deals.get({ 
+  id: '00',
+  fields: {
+    TITLE: 'John Doe'
+  }
+})
+```
+
+
+### Contact
+
+* ### Add
+```
+const { result } = await bitrix.contacts.add({ 
+  fields: {
+    NAME: 'John Doe'
+  }
+})
+```
+
+* ### Get
+```
+const { result } = await bitrix.contacts.get({ id: '00' })
+```
+
+* ### Delete
+```
+const { result } = await bitrix.contacts.delete({ id: '00' })
+```
+
+* ### Fields
+```
+const { result } = await bitrix.contacts.fields()
+```
+
+* ### List
+```
+const { result } = await bitrix.contacts.list({
+  filter: {
+    NAME: 'John Doe'
+  },
+  select: ['*']
+})
+```
+
+* ### Update
+```
+const { result } = await bitrix.contacts.get({ 
+  id: '00',
+  fields: {
+    NAME: 'John Doe'
+  }
+})
+```
+
+### Batch
+
+```
+const { result } = await bitrix.batch({ 
+  req_1: {
+    method: 'crm.deals.add',
+    params: {
+      fields: {
+        TITLE: 'new deal'
+      }
+    }
+  },
+  req_2: {
+    method: 'crm.contacts.list',
+    params: {
+      select: ['*']
+    }
+  }
+})
+```
