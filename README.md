@@ -35,7 +35,7 @@ const bitrix24 = new Bitrix24(`https://YOUR_DOMAIN.bitrix24.{ru|com|de}/rest/{US
 
 ### Deals
 
-* ### Add
+### Add
 ```
 const { result } = await bitrix.deals.add({ 
   fields: {
@@ -48,7 +48,7 @@ const { result } = await bitrix.deals.add({
 * params - Set of parameters. REGISTER_SONET_EVENT (Not required)
 
 
-* ### Get
+### Get
 ```
 const { result } = await bitrix.deals.get({ id: '00' })
 ```
@@ -56,7 +56,7 @@ const { result } = await bitrix.deals.get({ id: '00' })
 #### Params
 * id - deal ID.
 
-* ### Delete
+### Delete
 ```
 const { result } = await bitrix.deals.delete({ id: '00' })
 ```
@@ -64,12 +64,12 @@ const { result } = await bitrix.deals.delete({ id: '00' })
 #### Params
 * id - deal ID.
 
-* ### Fields
+### Fields
 ```
 const { result } = await bitrix.deals.fields()
 ```
 
-* ### List
+### List
 ```
 const { result } = await bitrix.deals.list({
   filter: {
@@ -85,7 +85,7 @@ const { result } = await bitrix.deals.list({
 * order - Order the response 'ASC' or 'DESC' by fields. (Not required)
 * start - Start of the request. (Not required)
 
-* ### Update
+### Update
 ```
 const { result } = await bitrix.deals.get({ 
   id: '00',
@@ -102,7 +102,7 @@ const { result } = await bitrix.deals.get({
 
 ### Contact
 
-* ### Add
+### Add
 ```
 const { result } = await bitrix.contacts.add({ 
   fields: {
@@ -115,7 +115,7 @@ const { result } = await bitrix.contacts.add({
 * fields - An object that specifies the parameter for a new contact (Not required)
 * params - Set of parameters. REGISTER_SONET_EVENT (Not required)
 
-* ### Get
+### Get
 ```
 const { result } = await bitrix.contacts.get({ id: '00' })
 ```
@@ -123,7 +123,7 @@ const { result } = await bitrix.contacts.get({ id: '00' })
 #### Params
 * id - Contact ID.
 
-* ### Delete
+### Delete
 ```
 const { result } = await bitrix.contacts.delete({ id: '00' })
 ```
@@ -131,12 +131,12 @@ const { result } = await bitrix.contacts.delete({ id: '00' })
 #### Params
 * id - Contact ID.
 
-* ### Fields
+### Fields
 ```
 const { result } = await bitrix.contacts.fields()
 ```
 
-* ### List
+### List
 ```
 const { result } = await bitrix.contacts.list({
   filter: {
@@ -152,7 +152,7 @@ const { result } = await bitrix.contacts.list({
 * order - Order the response 'ASC' or 'DESC' by fields. (Not required)
 * start - Start of the request. (Not required)
 
-* ### Update
+### Update
 ```
 const { result } = await bitrix.contacts.get({ 
   id: '00',
