@@ -43,16 +43,26 @@ const { result } = await bitrix.deals.add({
   }
 })
 ```
+#### Params
+* fields - An object that specifies the parameter for a new deal (Not required)
+* params - Set of parameters. REGISTER_SONET_EVENT (Not required)
+
 
 * ### Get
 ```
 const { result } = await bitrix.deals.get({ id: '00' })
 ```
 
+#### Params
+* id - deal ID.
+
 * ### Delete
 ```
 const { result } = await bitrix.deals.delete({ id: '00' })
 ```
+
+#### Params
+* id - deal ID.
 
 * ### Fields
 ```
@@ -69,6 +79,12 @@ const { result } = await bitrix.deals.list({
 })
 ```
 
+#### Params
+* filter - Object of fields and values to filter deals. (Not required)
+* select - Array of fields IDs that will return with the request response (Not required)
+* order - Order the response 'ASC' or 'DESC' by fields. (Not required)
+* start - Start of the request. (Not required)
+
 * ### Update
 ```
 const { result } = await bitrix.deals.get({ 
@@ -78,6 +94,10 @@ const { result } = await bitrix.deals.get({
   }
 })
 ```
+
+#### Params
+* fields - Object of fields to be update.
+* id - Deal ID.
 
 
 ### Contact
@@ -91,15 +111,25 @@ const { result } = await bitrix.contacts.add({
 })
 ```
 
+#### Params
+* fields - An object that specifies the parameter for a new contact (Not required)
+* params - Set of parameters. REGISTER_SONET_EVENT (Not required)
+
 * ### Get
 ```
 const { result } = await bitrix.contacts.get({ id: '00' })
 ```
 
+#### Params
+* id - Contact ID.
+
 * ### Delete
 ```
 const { result } = await bitrix.contacts.delete({ id: '00' })
 ```
+
+#### Params
+* id - Contact ID.
 
 * ### Fields
 ```
@@ -116,6 +146,12 @@ const { result } = await bitrix.contacts.list({
 })
 ```
 
+#### Params
+* filter - Object of fields and values to filter deals. (Not required)
+* select - Array of fields IDs that will return with the request response (Not required)
+* order - Order the response 'ASC' or 'DESC' by fields. (Not required)
+* start - Start of the request. (Not required)
+
 * ### Update
 ```
 const { result } = await bitrix.contacts.get({ 
@@ -125,6 +161,10 @@ const { result } = await bitrix.contacts.get({
   }
 })
 ```
+
+#### Params
+* fields - Object of fields to be update.
+* id - Contact ID.
 
 ### Batch
 
