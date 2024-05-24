@@ -33,7 +33,7 @@ const bitrix24 = new Bitrix24(`https://YOUR_DOMAIN.bitrix24.{ru|com|de}/rest/{US
 
 ## Methods
 
-### Deals
+## Deals
 
 ### Add
 ```
@@ -100,7 +100,7 @@ const { result } = await bitrix.deals.get({
 * id - Deal ID.
 
 
-### Contact
+## Contact
 
 ### Add
 ```
@@ -166,7 +166,7 @@ const { result } = await bitrix.contacts.get({
 * fields - Object of fields to be update.
 * id - Contact ID.
 
-### Batch
+## Batch
 
 ```
 const { result } = await bitrix.batch({ 
