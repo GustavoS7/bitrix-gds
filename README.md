@@ -8,22 +8,24 @@ A library that makes requests to Bitrix API much easier.
 
 Using npm:
 
-```
-npm install bitrix-gds
+```bash
+$ npm install bitrix-gds
 ```
 
 Using yarn:
 
-```
-yarn add bitrix-gds
+```bash
+$ yarn add bitrix-gds
 ```
 ## Get Started
 
 
-```
+```ts
 import { Bitrix24 } from 'bitrix-gds'
 
-const bitrix24 = new Bitrix24(`https://YOUR_DOMAIN.bitrix24.{ru|com|de}/rest/{USER_ID}/{WEBHOOK_TOKEN}`)
+const bitrix24 = new Bitrix24(
+  `https://YOUR_DOMAIN.bitrix24.{ru|com|de}/rest/{USER_ID}/{WEBHOOK_TOKEN}`
+)
 ```
 
 ### WEBHOOK_URL
@@ -36,7 +38,7 @@ const bitrix24 = new Bitrix24(`https://YOUR_DOMAIN.bitrix24.{ru|com|de}/rest/{US
 ## Deals
 
 ### Add
-```
+```ts
 const { result } = await bitrix.deals.add({ 
   fields: {
     TITLE: 'John Doe'
@@ -49,7 +51,7 @@ const { result } = await bitrix.deals.add({
 
 
 ### Get
-```
+```ts
 const { result } = await bitrix.deals.get({ id: '00' })
 ```
 
@@ -57,7 +59,7 @@ const { result } = await bitrix.deals.get({ id: '00' })
 * id - deal ID.
 
 ### Delete
-```
+```ts
 const { result } = await bitrix.deals.delete({ id: '00' })
 ```
 
@@ -65,12 +67,12 @@ const { result } = await bitrix.deals.delete({ id: '00' })
 * id - deal ID.
 
 ### Fields
-```
+```ts
 const { result } = await bitrix.deals.fields()
 ```
 
 ### List
-```
+```ts
 const { result } = await bitrix.deals.list({
   filter: {
     STAGE_ID: '00'
@@ -86,7 +88,7 @@ const { result } = await bitrix.deals.list({
 * start - Start of the request. (Not required)
 
 ### Update
-```
+```ts
 const { result } = await bitrix.deals.get({ 
   id: '00',
   fields: {
@@ -103,7 +105,7 @@ const { result } = await bitrix.deals.get({
 ## Contact
 
 ### Add
-```
+```ts
 const { result } = await bitrix.contacts.add({ 
   fields: {
     NAME: 'John Doe'
@@ -116,7 +118,7 @@ const { result } = await bitrix.contacts.add({
 * params - Set of parameters. REGISTER_SONET_EVENT (Not required)
 
 ### Get
-```
+```ts
 const { result } = await bitrix.contacts.get({ id: '00' })
 ```
 
@@ -124,7 +126,7 @@ const { result } = await bitrix.contacts.get({ id: '00' })
 * id - Contact ID.
 
 ### Delete
-```
+```ts
 const { result } = await bitrix.contacts.delete({ id: '00' })
 ```
 
@@ -132,12 +134,12 @@ const { result } = await bitrix.contacts.delete({ id: '00' })
 * id - Contact ID.
 
 ### Fields
-```
+```ts
 const { result } = await bitrix.contacts.fields()
 ```
 
 ### List
-```
+```ts
 const { result } = await bitrix.contacts.list({
   filter: {
     NAME: 'John Doe'
@@ -153,7 +155,7 @@ const { result } = await bitrix.contacts.list({
 * start - Start of the request. (Not required)
 
 ### Update
-```
+```ts
 const { result } = await bitrix.contacts.get({ 
   id: '00',
   fields: {
@@ -168,7 +170,7 @@ const { result } = await bitrix.contacts.get({
 
 ## Batch
 
-```
+```ts
 const { result } = await bitrix.batch({ 
   req_1: {
     method: 'crm.deals.add',
