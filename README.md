@@ -173,7 +173,7 @@ const { result } = await bitrix.contacts.get({
 ```ts
 const { result } = await bitrix.batch({ 
   req_1: {
-    method: 'crm.deals.add',
+    method: 'crm.deal.add',
     params: {
       fields: {
         TITLE: 'new deal'
@@ -181,7 +181,7 @@ const { result } = await bitrix.batch({
     }
   },
   req_2: {
-    method: 'crm.contacts.list',
+    method: 'crm.contact.list',
     params: {
       select: ['*']
     }
