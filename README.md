@@ -21,7 +21,7 @@ $ yarn add bitrix-gds
 
 
 ```ts
-import { Bitrix24 } from 'bitrix-gds'
+import Bitrix24 from 'bitrix-gds'
 
 const bitrix24 = new Bitrix24(
   `https://YOUR_DOMAIN.bitrix24.{ru|com|de}/rest/{USER_ID}/{WEBHOOK_TOKEN}`
