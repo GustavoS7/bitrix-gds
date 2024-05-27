@@ -1,42 +1,72 @@
-import { Methods } from '../../core/shared/methods';
+import {
+  Methods,
+  TMethodParams,
+  TMethodResponse,
+} from '../../core/shared/methods';
 
 export class DealUseCase {
-  private call: any;
+  private call: <M extends Methods>(
+    method: M,
+    params: TMethodParams<M>,
+  ) => Promise<TMethodResponse<M>>;
 
   constructor({ call }: any) {
     this.call = call;
   }
 
-  async add<T>({ fields, params }: any) {
-    return await this.call(Methods.CRM_DEAL_ADD, { fields, params });
+  add<T extends TMethodParams<Methods.CRM_DEAL_ADD>>({
+    fields,
+    params,
+  }: {
+    fields?: T['fields'];
+    params?: T['params'];
+  }): Promise<TMethodResponse<Methods.CRM_DEAL_ADD>> {
+    return this.call(Methods.CRM_DEAL_ADD, { fields, params });
   }
 
-  async delete({ id }: any) {
-    return await this.call(Methods.CRM_DEAL_DELETE, { id });
+  delete<T extends TMethodParams<Methods.CRM_DEAL_DELETE>>({
+    id,
+  }: {
+    id: T['id'];
+  }): Promise<TMethodResponse<Methods.CRM_DEAL_DELETE>> {
+    return this.call(Methods.CRM_DEAL_DELETE, { id });
   }
 
-  async fields() {
-    return await this.call(Methods.CRM_DEAL_FIELDS, {});
+  fields(): Promise<TMethodResponse<Methods.CRM_DEAL_FIELDS>> {
+    return this.call(Methods.CRM_CONTACT_FIELDS, {});
   }
 
-  async get({ id }: any) {
-    return await this.call(Methods.CRM_DEAL_GET, { id });
+  get<T extends TMethodParams<Methods.CRM_DEAL_GET>>({
+    id,
+  }: {
+    id: T['id'];
+  }): Promise<TMethodResponse<Methods.CRM_DEAL_GET>> {
+    return this.call(Methods.CRM_DEAL_GET, { id });
   }
 
-  async list({ order, filter, select, start }: any) {
-    return await this.call(Methods.CRM_DEAL_LIST, {
-      order,
-      filter,
-      select,
-      start,
-    });
+  list<T extends TMethodParams<Methods.CRM_DEAL_LIST>>({
+    filter,
+    order,
+    select,
+    start,
+  }: {
+    order?: T['order'];
+    filter?: T['filter'];
+    select?: T['select'];
+    start?: T['start'];
+  }): Promise<TMethodResponse<Methods.CRM_DEAL_LIST>> {
+    return this.call(Methods.CRM_DEAL_LIST, { filter, order, select, start });
   }
 
-  async update({ id, fields, params }: any) {
-    return await this.call(Methods.CRM_DEAL_LIST, {
-      id,
-      fields,
-      params,
-    });
+  update<T extends TMethodParams<Methods.CRM_DEAL_UPDATE>>({
+    id,
+    fields,
+    params,
+  }: {
+    id: T['id'];
+    fields?: T['fields'];
+    params?: T['params'];
+  }): Promise<TMethodResponse<Methods.CRM_DEAL_UPDATE>> {
+    return this.call(Methods.CRM_DEAL_UPDATE, { id, fields, params });
   }
 }

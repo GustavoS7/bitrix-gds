@@ -13,8 +13,8 @@ export default class Bitrix24 {
   constructor(baseUrl: string) {
     const app = new App(baseUrl);
 
-    this.contacts = app.contacts();
-    this.deals = app.deals();
+    this.contacts = app.contacts;
+    this.deals = app.deals;
     this.batch = app.batch();
   }
 }

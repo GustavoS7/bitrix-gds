@@ -1,4 +1,6 @@
+import { ContactUseCase, DealUseCase } from '../application/use-cases';
 import { TBatchResponse } from '../core/shared/response';
+import { IBatchCallerResponse } from './interfaces';
 import axios, { Axios } from 'axios';
 import {
   Methods,
@@ -6,11 +8,6 @@ import {
   TMethodParams,
   TMethodResponse,
 } from '../core/shared/methods/';
-import {
-  IDealCallerResponse,
-  IContactCallerResponse,
-  IBatchCallerResponse,
-} from './interfaces';
 
 export class App {
   private api: Axios;
@@ -18,6 +15,9 @@ export class App {
     method: M,
     params: TMethodParams<M>,
   ) => Promise<TMethodResponse<M>>;
+
+  deals: DealUseCase;
+  contacts: ContactUseCase;
 
   constructor(baseURL: string) {
     this.api = axios.create({
@@ -40,114 +40,9 @@ export class App {
         throw new Error('Error');
       }
     };
-  }
 
-  deals(): IDealCallerResponse {
-    return {
-      add: <T extends TMethodParams<Methods.CRM_DEAL_ADD>>({
-        fields,
-        params,
-      }: {
-        fields?: T['fields'];
-        params?: T['params'];
-      }): Promise<TMethodResponse<Methods.CRM_DEAL_ADD>> =>
-        this.call(Methods.CRM_DEAL_ADD, { fields, params }),
-
-      delete: <T extends TMethodParams<Methods.CRM_DEAL_DELETE>>({
-        id,
-      }: {
-        id: T['id'];
-      }): Promise<TMethodResponse<Methods.CRM_DEAL_DELETE>> =>
-        this.call(Methods.CRM_DEAL_DELETE, { id }),
-
-      fields: (): Promise<TMethodResponse<Methods.CRM_DEAL_FIELDS>> =>
-        this.call(Methods.CRM_CONTACT_FIELDS, {}),
-
-      get: <T extends TMethodParams<Methods.CRM_DEAL_GET>>({
-        id,
-      }: {
-        id: T['id'];
-      }): Promise<TMethodResponse<Methods.CRM_DEAL_GET>> =>
-        this.call(Methods.CRM_DEAL_GET, { id }),
-
-      list: <T extends TMethodParams<Methods.CRM_DEAL_LIST>>({
-        filter,
-        order,
-        select,
-        start,
-      }: {
-        order?: T['order'];
-        filter?: T['filter'];
-        select?: T['select'];
-        start?: T['start'];
-      }): Promise<TMethodResponse<Methods.CRM_DEAL_LIST>> =>
-        this.call(Methods.CRM_DEAL_LIST, { filter, order, select, start }),
-
-      update: <T extends TMethodParams<Methods.CRM_DEAL_UPDATE>>({
-        id,
-        fields,
-        params,
-      }: {
-        id: T['id'];
-        fields?: T['fields'];
-        params?: T['params'];
-      }): Promise<TMethodResponse<Methods.CRM_DEAL_UPDATE>> =>
-        this.call(Methods.CRM_DEAL_UPDATE, { id, fields, params }),
-    };
-  }
-
-  contacts(): IContactCallerResponse {
-    return {
-      add: <T extends TMethodParams<Methods.CRM_CONTACT_ADD>>({
-        fields,
-        params,
-      }: {
-        fields?: T['fields'];
-        params?: T['params'];
-      }): Promise<TMethodResponse<Methods.CRM_CONTACT_ADD>> =>
-        this.call(Methods.CRM_CONTACT_ADD, { fields, params }),
-
-      delete: <T extends TMethodParams<Methods.CRM_CONTACT_DELETE>>({
-        id,
-      }: {
-        id: T['id'];
-      }): Promise<TMethodResponse<Methods.CRM_CONTACT_DELETE>> =>
-        this.call(Methods.CRM_CONTACT_DELETE, { id }),
-
-      fields: (): Promise<TMethodResponse<Methods.CRM_CONTACT_FIELDS>> =>
-        this.call(Methods.CRM_CONTACT_FIELDS, {}),
-
-      get: <T extends TMethodParams<Methods.CRM_CONTACT_GET>>({
-        id,
-      }: {
-        id: T['id'];
-      }): Promise<TMethodResponse<Methods.CRM_CONTACT_GET>> =>
-        this.call(Methods.CRM_CONTACT_GET, { id }),
-
-      list: <T extends TMethodParams<Methods.CRM_CONTACT_LIST>>({
-        filter,
-        order,
-        select,
-        start,
-      }: {
-        order?: T['order'];
-        filter?: T['filter'];
-        select?: T['select'];
-        start?: T['start'];
-      }): Promise<TMethodResponse<Methods.CRM_CONTACT_LIST>> =>
-        this.call(Methods.CRM_CONTACT_LIST, { filter, order, select, start }),
-
-      update: <T extends TMethodParams<Methods.CRM_CONTACT_UPDATE>>({
-        id,
-        fields,
-        params,
-      }: {
-        id: T['id'];
-        fields?: T['fields'];
-        params?: T['params'];
-      }): Promise<TMethodResponse<Methods.CRM_CONTACT_UPDATE>> =>
-        this.call(Methods.CRM_CONTACT_UPDATE, { id, fields, params }),
-    };
+    this.deals = new DealUseCase({ call: this.call });
+    this.contacts = new ContactUseCase({ call: this.call });
   }
 
   batch(): IBatchCallerResponse {
