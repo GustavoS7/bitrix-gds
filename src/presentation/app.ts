@@ -2,6 +2,7 @@ import { ContactUseCase, DealUseCase } from '../application/use-cases';
 import { TBatchResponse } from '../core/shared/response';
 import { IBatchCallerResponse } from './interfaces';
 import axios, { Axios } from 'axios';
+import qs from 'qs';
 import {
   Methods,
   MethodsString,
@@ -57,7 +58,7 @@ export class App {
 
       keys.forEach((el) => {
         cmd.push(
-          `cmd[${el}]=${methods[el].method}%3F${new URLSearchParams(methods[el].params).toString()}%3F`,
+          `cmd[${el}]=${methods[el].method}%3F${qs.stringify(methods[el].params)}%3F`,
         );
       });
 
