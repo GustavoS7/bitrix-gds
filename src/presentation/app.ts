@@ -58,7 +58,7 @@ export class App {
 
       keys.forEach((el) => {
         cmd.push(
-          `cmd[${el}]=${methods[el].method}%3F${qs.stringify(methods[el].params)}%3F`,
+          `cmd[${el}]=${methods[el].method}?${qs.stringify(methods[el].params)}`,
         );
       });
 
