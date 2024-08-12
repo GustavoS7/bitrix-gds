@@ -60,7 +60,7 @@ export class App {
 
           return {
             ...calls,
-            [`cmd[${name}]`]: `${method}${stringifiedParams}`,
+            [name]: `${method}${stringifiedParams}`,
           };
         },
         {},
