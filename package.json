@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/GustavoS7/bitrix-gds.git"
   },
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Bitrix24 library made in TypeScript. Born to simplify bitrix api requests",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -38,7 +38,7 @@
     "typescript": "5.4.5"
   },
   "dependencies": {
-    "axios": "1.7.2",
+    "axios": "1.7.4",
     "qs": "6.12.3"
   }
 }
